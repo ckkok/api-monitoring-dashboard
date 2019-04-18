@@ -60,6 +60,10 @@ export default {
 }
 </script>
 <style scoped>
+#dashboard-container {
+  width: 100%;
+}
+
 #dashboard {
   display: inline-flex;
   justify-content: flex-start;
