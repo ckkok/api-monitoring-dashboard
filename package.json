@@ -1,0 +1,9 @@
+{
+  "name": "VueDashboard",
+  "version": "1.0.0",
+  "description": "An API monitoring dashboard built with VueJS",
+  "keywords": [],
+  "author": "Maltem Consulting Group",
+  "license": "ISC",
+  "dependencies": {}
+}
