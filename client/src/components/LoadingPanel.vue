@@ -33,6 +33,7 @@ export default {
   text-align: center;
   position: fixed;
   top: 50%;
+  transform: translateY(-50%);
   width: 100%;
 }
 </style>

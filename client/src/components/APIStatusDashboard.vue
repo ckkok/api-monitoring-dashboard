@@ -83,7 +83,8 @@ export default {
   text-align: center;
   font-size: 5rem;
   font-weight: 800;
-  color: white;
+  color: #6b2809;
+  text-shadow: #000000;
 }
 
 .gauge-container {
