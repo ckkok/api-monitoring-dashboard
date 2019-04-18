@@ -1,0 +1,25 @@
+{
+  "apis": [
+    {
+      "apiName": "DummyAPI",
+      "threshold": 10,
+      "thresholdDuration": 1,
+      "min": 0,
+      "max": 100
+    },
+    {
+      "apiName": "DummyAPI2",
+      "threshold": 60,
+      "thresholdDuration": 5,
+      "min": 0,
+      "max": 150
+    },
+    {
+      "apiName": "DummyAPI3",
+      "threshold": 20,
+      "thresholdDuration": 2,
+      "min": 0,
+      "max": 200
+    }
+  ]
+}

@@ -1,0 +1,122 @@
+[
+  {
+    "took": 730,
+    "timed_out": false,
+    "_shards": {
+      "total": 5,
+      "successful": 5,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": 63242669,
+      "max_score": 0,
+      "hits": []
+    },
+    "aggregations": {
+      "ERRORS": {
+        "doc_count": 80
+      }
+    }
+  },
+  {
+    "took": 730,
+    "timed_out": false,
+    "_shards": {
+      "total": 5,
+      "successful": 5,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": 6324266,
+      "max_score": 0,
+      "hits": []
+    },
+    "aggregations": {
+      "ERRORS": {
+        "doc_count": 25
+      }
+    }
+  },
+  {
+    "took": 730,
+    "timed_out": false,
+    "_shards": {
+      "total": 5,
+      "successful": 5,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": 6324266,
+      "max_score": 0,
+      "hits": []
+    },
+    "aggregations": {
+      "ERRORS": {
+        "doc_count": 25
+      }
+    }
+  },
+  {
+    "took": 730,
+    "timed_out": false,
+    "_shards": {
+      "total": 5,
+      "successful": 5,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": 6324266,
+      "max_score": 0,
+      "hits": []
+    },
+    "aggregations": {
+      "ERRORS": {
+        "doc_count": 25
+      }
+    }
+  },
+  {
+    "took": 730,
+    "timed_out": false,
+    "_shards": {
+      "total": 5,
+      "successful": 5,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": 6324266,
+      "max_score": 0,
+      "hits": []
+    },
+    "aggregations": {
+      "ERRORS": {
+        "doc_count": 25
+      }
+    }
+  },
+  {
+    "took": 730,
+    "timed_out": false,
+    "_shards": {
+      "total": 5,
+      "successful": 5,
+      "skipped": 0,
+      "failed": 0
+    },
+    "hits": {
+      "total": 6324266,
+      "max_score": 0,
+      "hits": []
+    },
+    "aggregations": {
+      "ERRORS": {
+        "doc_count": 25
+      }
+    }
+  }
+]
