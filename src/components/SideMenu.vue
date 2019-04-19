@@ -3,11 +3,13 @@
     Dashboard
   </div>
 </template>
+
 <script>
 export default {
   
 }
 </script>
+
 <style scoped>
 .side-panel {
   padding: 0.75em;

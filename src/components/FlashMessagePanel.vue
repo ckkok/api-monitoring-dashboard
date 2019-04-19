@@ -9,12 +9,14 @@
     </transition-group>
   </div>
 </template>
+
 <script>
 export default {
   name: 'flash-message-panel',
   props: ['messages']
 }
 </script>
+
 <style scoped>
 .message-panel-wrapper {
   position: static;

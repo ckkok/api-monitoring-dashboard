@@ -9,7 +9,7 @@
     },
     {
       "apiName": "DummyAPI2",
-      "threshold": 60,
+      "threshold": 20,
       "thresholdDuration": 5,
       "min": 0,
       "max": 150

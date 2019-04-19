@@ -4,18 +4,22 @@
       :start-angle="-90"
       :end-angle="90"
       :value=value
-      :separator-step=high
+      :separator-step="0"
+      :separator-thickness="0"
       :min=low
       :max=high
       :gauge-color="[{ offset: 0, color: '#00FF00'}, { offset: 100, color: '#FF0000'}]"
       :scale-interval="0"
     >
-      <div class="caption">{{numErrors}}</div>
-      <div class="needle"></div>
+      <div class="inner">
+        <div class="caption">{{numErrors}}</div>
+        <div class="needle"></div>
+      </div>
     </VueSvgGauge>
     <div class="title">{{name}}</div>
   </div>
 </template>
+
 <script>
 import { VueSvgGauge } from 'vue-svg-gauge';
 
@@ -56,7 +60,13 @@ export default {
   }
 }
 </script>
+
 <style scoped>
+.inner {
+  width: 100%;
+  height: 100%;
+}
+
 .caption {
   text-align: center;
   position: relative;

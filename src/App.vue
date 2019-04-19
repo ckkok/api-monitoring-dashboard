@@ -1,12 +1,12 @@
 <template>
   <div id="app">
     <transition-group name="fade" mode="out-in">
-      <LoadingPanel key="loadingpanel" v-if="!done" />
+      <LoadingPanel key="loadingpanel" v-if="!loaded" />
       <FlashMessagePanel key="msgpanel" v-if="messages" :messages="messages" />
     </transition-group>
     <div id="wrapper">
-      <SideMenu key="sidepanel" />
-      <APIStatusDashboard key="dashboard" :apis="apiList" :queryBuilder="queryBuilder" />
+      <SideMenu v-show="false" key="sidepanel" />
+      <APIStatusDashboard key="dashboard" :apis="apiList" :fetchAPIStatusService="fetchAPIStatusService" />
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ import SideMenu from './components/SideMenu';
 import APIData from './config.json';
 import FlashMessagePanel from './components/FlashMessagePanel';
 import LoadingPanel from './components/LoadingPanel';
-import queryBuilder from './services/QueryService.js';
+import fetchAPIStatusService from './services/QueryService.js';
 
 export default {
   name: 'app',
@@ -26,16 +26,20 @@ export default {
   },
   data: function() {
     return {
-      apiList: APIData.apis, queryBuilder, messages: [], done: false
+      apiList: APIData.apis, 
+      fetchAPIStatusService, 
+      messages: [], 
+      loaded: false
     }
   },
   created: function() {
-    setTimeout(() => this.done = true, 1500);
+    setTimeout(() => this.loaded = true, 1500);
     setTimeout(() => this.messages.push('TEST MESSAGE - Something went wrong'), 3000);
     setTimeout(() => this.messages.pop(), 5000);
   }
 }
 </script>
+
 <style scoped>
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;

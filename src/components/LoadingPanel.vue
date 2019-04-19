@@ -5,6 +5,7 @@
     </div>
   </div>
 </template>
+
 <script>
 export default {
   name: 'loading-panel',
@@ -18,6 +19,7 @@ export default {
   }
 }
 </script>
+
 <style scoped>
 #loading-panel-wrapper {
   position: fixed;

@@ -1,44 +1,48 @@
 <template>
   <div id="dashboard-container">
-    <div id="default-notice" v-if="numGauges === 0">
+    <div id="default-notice" v-if="activeGauges.length === 0">
       <div id="default-notice-message">
         OK
       </div>
     </div>
-    <div id="dashboard" v-for="api in registry" v-bind:key="api.apiName">
-      <div class="gauge-container" v-if="api.response.aggregations.ERRORS.doc_count > api.threshold" @click="go(api.apiName)">
+    <div id="dashboard">
+      <div class="gauge-container" @click="go(api.apiName)" v-for="api in activeGauges" v-bind:key="api.apiName">
         <Gauge :value="api.response.aggregations.ERRORS.doc_count" :min="api.min" :max="api.max" :service="api.apiName" />
       </div>
     </div>
   </div>
 </template>
+
 <script>
 import Gauge from './Gauge';
 import mockResponse from '../mockResponse.json';
+
+const API_STATUS_SERVICE = 'fetchAPIStatusService';
+const API_24_HOUR_STATUS = 'fetchAPIStatus24Hours';
 
 export default {
   name: 'api-status-dashboard',
   components: {
     Gauge
   },
-  props: ['apis', 'queryBuilder'],
+  props: ['apis', 'fetchAPIStatusService'],
   data: function () {
     return {
-      numGauges: 0,
-      registry: []
+      registry: [],
+      worker: null
     }
   },
-  watch: {
-    registry: function(val) {
-      // compute DOM changes here. New value of registry is in here.
+  computed: {
+    activeGauges: function() {
+      return this.registry.filter(api => api.response.aggregations.ERRORS.doc_count > api.threshold);
     }
   },
   methods: {
     fetchAPIStatuses() {
-      this.numGauges = 0;
+      this.worker.postMessage(API_STATUS_SERVICE)
+        .then(console.log, console.error);
       this.registry = this.registry.map(api => {
         api.response.aggregations.ERRORS.doc_count += (Math.floor(Math.random() * 6) - 3);
-        if (api.response.aggregations.ERRORS.doc_count > api.threshold) this.numGauges++;
         return api;
       });
     },
@@ -55,22 +59,33 @@ export default {
   },
   created: function () {
     this.bootstrap();
+    const workerConfig = [
+      { message: API_STATUS_SERVICE, func: this.fetchAPIStatusService },
+      { message: API_24_HOUR_STATUS, func: this.fetchAPIStatusService }
+    ];
+    this.worker = this.$worker.create(workerConfig);
     setInterval(() => this.fetchAPIStatuses(), 2000);
   }
 }
 </script>
+
 <style scoped>
 #dashboard-container {
   width: 100%;
+  height: 100%;
 }
 
 #dashboard {
-  display: inline-flex;
-  justify-content: flex-start;
+  box-sizing: border-box;
+  display: grid;
+  padding: 15px;
+  grid-gap: 15px;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
   overflow: auto;
 }
 
-#default-notice {
+#default-notice, #dashboard {
   width: 100%;
   height: 100%;
 }
@@ -89,9 +104,8 @@ export default {
 
 .gauge-container {
   cursor: pointer;
-  margin: 1.5rem 0 0 1.5rem;
   padding: 1.5rem;
-  height: 13.5rem;
+  height: auto;
   background-color: #261700;
   border: 1px solid #4C2E00;
   border-radius: 6px;
