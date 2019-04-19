@@ -1,17 +1,18 @@
 <template>
-  <div class="side-panel">
-    Dashboard
+  <div class="side-menu">
+    {{ title }}
   </div>
 </template>
 
 <script>
 export default {
-  
+  name: 'side-menu',
+  props: ['title']
 }
 </script>
 
 <style scoped>
-.side-panel {
+.side-menu {
   padding: 0.75em;
   left: 0;
   top: 0;

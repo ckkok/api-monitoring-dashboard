@@ -5,7 +5,7 @@
       <FlashMessagePanel key="msgpanel" v-if="messages" :messages="messages" />
     </transition-group>
     <div id="wrapper">
-      <SideMenu v-show="false" key="sidepanel" />
+      <SideMenu v-show="false" title="Dashboard" key="sidepanel" />
       <APIStatusDashboard key="dashboard" :apis="apiList" :fetchAPIStatusService="fetchAPIStatusService" />
     </div>
   </div>
