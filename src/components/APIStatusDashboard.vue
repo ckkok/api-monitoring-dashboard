@@ -14,7 +14,7 @@
 </template>
 
 <script>
-import Gauge from './Gauge';
+import Gauge from './D3Gauge';
 import mockResponse from '../mockResponse.json';
 
 const API_STATUS_SERVICE = 'fetchAPIStatusService';
@@ -40,7 +40,7 @@ export default {
   methods: {
     fetchAPIStatuses() {
       this.worker.postMessage(API_STATUS_SERVICE)
-        .then(console.log, console.error);
+        .then(() => {}, console.error);
       this.registry = this.registry.map(api => {
         api.response.aggregations.ERRORS.doc_count += (Math.floor(Math.random() * 6) - 3);
         return api;
