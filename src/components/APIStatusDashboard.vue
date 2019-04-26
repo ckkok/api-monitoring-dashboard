@@ -39,18 +39,18 @@ export default {
   },
   computed: {
     activeGauges: function() {
-      return this.registry.filter(api => api.errors > 0);
+      return this.registry.filter(api => api.errors > api.threshold);
     }
   },
   methods: {
     fetchAPIStatuses() {
       let headers = new Headers();
-          headers.append('Authorization', 'Basic ' + base64.encode('WM_read:wM_R34d'));
+          headers.append('Authorization', 'Basic ' + base64.encode('angelesju:Azerty01'));
           headers.append('Content-Type' , 'application/json');
 
       let queryString = QueryService(servicesEnum);
 
-    fetch(`http://llvcp111d:9200/webmethodsmediator*/_search`, {
+    fetch(`http://llvcp115p:9200/webmethodsmediator*/_search`, {
         method : 'POST',
         credentials : "include",
         headers : headers,
@@ -116,8 +116,8 @@ export default {
   display: grid;
   padding: 15px;
   grid-gap: 15px;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(3, 1fr);
   overflow: auto;
 }
 
@@ -140,11 +140,11 @@ export default {
 
 .gauge-container {
   cursor: pointer;
-  padding: 1.5rem;
+  padding: 1rem;
   height: auto;
-  background-color: #261700;
-  border: 1px solid #4C2E00;
+  background-color: rgba(255, 255, 255, 0.822);
+  border: 1px solid rgba(114, 112, 110, 0.527);
   border-radius: 6px;
-  box-shadow: 1px 1px 1px 1px #21171b;
+  box-shadow: 1px 1px 1px 1px #8b888af3;
 }
 </style>

@@ -204,15 +204,14 @@ export default {
   text-align: center;
   position: absolute;
   top: 50%;
-  color: white;
+  color: black;
 }
 
 .title {
   width: 100%;
   text-align: center;
-  color: white;
+  color: black;
   font-weight: 800;
-  font-size: 1.25rem;
   position: absolute;
   top: 80%;
 }
@@ -223,14 +222,14 @@ export default {
 
 .meter g.pointer {
   fill: #e85116;
-  stroke: #ffffff;
+  stroke: #ffffff6c;
 }
 
 .meter g.label text {
   text-anchor: middle;
   font-size: 14px;
   font-weight: bold;
-  fill: #ffffff;
+  fill: black;
 }
 </style>
 

@@ -8,6 +8,7 @@
       <SideMenu v-show="false" title="Dashboard" key="sidepanel" />
       <APIStatusDashboard key="dashboard" :apis="apiList" :fetchAPIStatusService="fetchAPIStatusService" />
     </div>
+    <BottomBar></BottomBar>
   </div>
 </template>
 
@@ -18,11 +19,12 @@ import APIData from './config.json';
 import FlashMessagePanel from './components/FlashMessagePanel';
 import LoadingPanel from './components/LoadingPanel';
 import fetchAPIStatusService from './services/QueryService.js';
+import BottomBar from './components/BottomBar';
 
 export default {
   name: 'app',
   components: {
-    APIStatusDashboard, SideMenu, FlashMessagePanel, LoadingPanel
+    APIStatusDashboard, SideMenu, FlashMessagePanel, LoadingPanel, BottomBar
   },
   data: function() {
     return {
