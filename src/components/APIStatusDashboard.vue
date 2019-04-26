@@ -7,15 +7,19 @@
     </div>
     <div id="dashboard">
       <div class="gauge-container" @click="go(api.apiName)" v-for="api in activeGauges" v-bind:key="api.apiName">
-        <Gauge :value="api.response.aggregations.ERRORS.doc_count" :min="api.min" :max="api.max" :service="api.apiName" />
+        <Gauge :value="api.errors" :min="api.min" :max="api.max" :service="api.apiName" />
       </div>
     </div>
   </div>
 </template>
 
 <script>
+/*eslint-disable*/
 import Gauge from './D3Gauge';
 import mockResponse from '../mockResponse.json';
+import QueryService from '../services/QueryService.js';
+import { servicesEnum } from "../services/enums.js";
+import base64 from 'base-64';
 
 const API_STATUS_SERVICE = 'fetchAPIStatusService';
 const API_24_HOUR_STATUS = 'fetchAPIStatus24Hours';
@@ -29,22 +33,37 @@ export default {
   data: function () {
     return {
       registry: [],
-      worker: null
+      worker: null,
+      errors: null
     }
   },
   computed: {
     activeGauges: function() {
-      return this.registry.filter(api => api.response.aggregations.ERRORS.doc_count > api.threshold);
+      return this.registry.filter(api => api.errors > 0);
     }
   },
   methods: {
     fetchAPIStatuses() {
-      this.worker.postMessage(API_STATUS_SERVICE)
-        .then(() => {}, console.error);
-      this.registry = this.registry.map(api => {
-        api.response.aggregations.ERRORS.doc_count += (Math.floor(Math.random() * 6) - 3);
-        return api;
-      });
+      let headers = new Headers();
+          headers.append('Authorization', 'Basic ' + base64.encode('WM_read:wM_R34d'));
+          headers.append('Content-Type' , 'application/json');
+
+      let queryString = QueryService(servicesEnum);
+
+    fetch(`http://llvcp111d:9200/webmethodsmediator*/_search`, {
+        method : 'POST',
+        credentials : "include",
+        headers : headers,
+        body : queryString
+      }).then(response => { return response.json() })
+        .then(json => { this.mapResult(json) })
+        .catch(console.log);
+      // this.worker.postMessage(API_STATUS_SERVICE)
+      //   .then(() => {}, console.error);
+      // this.registry = this.registry.map(api => {
+      //   api.response.aggregations.ERRORS.doc_count += (Math.floor(Math.random() * 6) - 3);
+      //   return api;
+      // });
     },
     bootstrap() {
       const response = this.apis.map(api => {
@@ -53,18 +72,35 @@ export default {
       });
       this.registry = response;
     },
-    go(msg) {
-      console.log('Clicked on ' + msg);
+    // go(msg) {
+    //   // console.log('Clicked on ' + msg);
+    // }
+    mapResult(json) {
+      let apis = json.aggregations;
+      let registry = [];
+      Object.keys(apis).forEach((api) => {
+          let m = servicesEnum[api].threshold + 100;
+          let a = {
+            apiName: servicesEnum[api].apiName,
+            threshold: servicesEnum[api].threshold,
+            max: m,
+            min: 0,
+            errors: apis[api].doc_count
+          }
+          registry.push(a);
+      });
+      this.registry = registry;
     }
   },
   created: function () {
-    this.bootstrap();
+    // this.bootstrap();
     const workerConfig = [
       { message: API_STATUS_SERVICE, func: this.fetchAPIStatusService },
       { message: API_24_HOUR_STATUS, func: this.fetchAPIStatusService }
     ];
     this.worker = this.$worker.create(workerConfig);
-    setInterval(() => this.fetchAPIStatuses(), 2000);
+    this.fetchAPIStatuses();
+    setInterval(() => this.fetchAPIStatuses(), 60000);
   }
 }
 </script>
