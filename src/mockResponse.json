@@ -1,122 +1,170 @@
-[
-  {
-    "took": 730,
-    "timed_out": false,
-    "_shards": {
-      "total": 5,
-      "successful": 5,
-      "skipped": 0,
-      "failed": 0
-    },
-    "hits": {
-      "total": 63242669,
-      "max_score": 0,
-      "hits": []
-    },
-    "aggregations": {
-      "ERRORS": {
-        "doc_count": 80
-      }
-    }
+{
+  "took": 6364,
+  "timed_out": false,
+  "_shards": {
+    "total": 5,
+    "successful": 5,
+    "skipped": 0,
+    "failed": 0
   },
-  {
-    "took": 730,
-    "timed_out": false,
-    "_shards": {
-      "total": 5,
-      "successful": 5,
-      "skipped": 0,
-      "failed": 0
-    },
-    "hits": {
-      "total": 6324266,
-      "max_score": 0,
-      "hits": []
-    },
-    "aggregations": {
-      "ERRORS": {
-        "doc_count": 25
-      }
-    }
+  "hits": {
+    "total": 61509482,
+    "max_score": 0,
+    "hits": []
   },
-  {
-    "took": 730,
-    "timed_out": false,
-    "_shards": {
-      "total": 5,
-      "successful": 5,
-      "skipped": 0,
-      "failed": 0
+  "aggregations": {
+    "EAI_ReceptionXMLData": {
+      "doc_count": 0
     },
-    "hits": {
-      "total": 6324266,
-      "max_score": 0,
-      "hits": []
+    "EAI_clientSearch": {
+      "doc_count": 0
     },
-    "aggregations": {
-      "ERRORS": {
-        "doc_count": 25
-      }
-    }
-  },
-  {
-    "took": 730,
-    "timed_out": false,
-    "_shards": {
-      "total": 5,
-      "successful": 5,
-      "skipped": 0,
-      "failed": 0
+    "EAI_validationTicketCreation": {
+      "doc_count": 0
     },
-    "hits": {
-      "total": 6324266,
-      "max_score": 0,
-      "hits": []
+    "EAI_launchBPMbyCTRLM": {
+      "doc_count": 0
     },
-    "aggregations": {
-      "ERRORS": {
-        "doc_count": 25
-      }
-    }
-  },
-  {
-    "took": 730,
-    "timed_out": false,
-    "_shards": {
-      "total": 5,
-      "successful": 5,
-      "skipped": 0,
-      "failed": 0
+    "EAI_PosLogStrTransactionSAP": {
+      "doc_count": 0
     },
-    "hits": {
-      "total": 6324266,
-      "max_score": 0,
-      "hits": []
+    "EAI_sendOrdersToFiesso": {
+      "doc_count": 0
     },
-    "aggregations": {
-      "ERRORS": {
-        "doc_count": 25
-      }
-    }
-  },
-  {
-    "took": 730,
-    "timed_out": false,
-    "_shards": {
-      "total": 5,
-      "successful": 5,
-      "skipped": 0,
-      "failed": 0
+    "EAI_RMSTransfer": {
+      "doc_count": 0
     },
-    "hits": {
-      "total": 6324266,
-      "max_score": 0,
-      "hits": []
+    "EAI_PosLogStrTransaction": {
+      "doc_count": 0
     },
-    "aggregations": {
-      "ERRORS": {
-        "doc_count": 25
-      }
+    "EAI_CreateIncident": {
+      "doc_count": 0
+    },
+    "EAI_ASNShipment": {
+      "doc_count": 0
+    },
+    "METAPACK_BlackBox": {
+      "doc_count": 0
+    },
+    "SII_CheckTaxIdentificationNumber": {
+      "doc_count": 22
+    },
+    "EAI_OrderConfirmation": {
+      "doc_count": 0
+    },
+    "EAI_salesCreation": {
+      "doc_count": 0
+    },
+    "EAI_ItemMultilocationStock": {
+      "doc_count": 0
+    },
+    "EAI_createPR": {
+      "doc_count": 0
+    },
+    "EAI_createInvStockMovement": {
+      "doc_count": 0
+    },
+    "EAI_RestfulInventoryService": {
+      "doc_count": 0
+    },
+    "EAI_clientDetailEnquiry": {
+      "doc_count": 0
+    },
+    "EAI_OrderFulfillment": {
+      "doc_count": 0
+    },
+    "EAI_sendOrdersToSPP": {
+      "doc_count": 0
+    },
+    "EAI_StockLedgerErrorsRecovery": {
+      "doc_count": 0
+    },
+    "EAI_stockMovement_Creation": {
+      "doc_count": 0
+    },
+    "EAI_sendMailToSF": {
+      "doc_count": 0
+    },
+    "clientDetailEnquiry": {
+      "doc_count": 0
+    },
+    "EAI_PrintingRequest": {
+      "doc_count": 0
+    },
+    "EAI_getErrorsFromElasticsearch": {
+      "doc_count": 1
+    },
+    "EAI_PosLogStrTransactionNEMOESF": {
+      "doc_count": 0
+    },
+    "EAI_createRepairToIcon": {
+      "doc_count": 13
+    },
+    "EAI_FilePooling": {
+      "doc_count": 0
+    },
+    "EAI_clientCreationUpdate": {
+      "doc_count": 0
+    },
+    "OROB_LocateServices": {
+      "doc_count": 0
+    },
+    "EAI_clientAdvisorEnquiry": {
+      "doc_count": 0
+    },
+    "EAI_PosLogStrTransactionCONSO": {
+      "doc_count": 0
+    },
+    "EAI_createStoreTransaction": {
+      "doc_count": 1
+    },
+    "EAI_CallOROBFulfillmentRequest": {
+      "doc_count": 3
+    },
+    "enterpriseSF": {
+      "doc_count": 0
+    },
+    "EAI_SalesCreation": {
+      "doc_count": 0
+    },
+    "EAI_createStockMovement": {
+      "doc_count": 0
+    },
+    "EAI_SAPTableReplication": {
+      "doc_count": 0
+    },
+    "EAI_GetPricesByCountry": {
+      "doc_count": 0
+    },
+    "EAI_CreateOrderToXstore": {
+      "doc_count": 0
+    },
+    "EAI_HandleMyOrderWithClientInfo": {
+      "doc_count": 0
+    },
+    "EAI_TaxFreeServices": {
+      "doc_count": 1
+    },
+    "SF_MyCcAPI": {
+      "doc_count": 103
+    },
+    "EAI_CustomerServicesApiService": {
+      "doc_count": 11
+    },
+    "Line_GenQRCode": {
+      "doc_count": 0
+    },
+    "MYPR_CreateXStorePr": {
+      "doc_count": 0
+    },
+    "EAI_StockLedger": {
+      "doc_count": 0
+    },
+    "EAI_GetPricesAndStocks": {
+      "doc_count": 1
+    },
+    "EAI_CallOROBFulfillmentRequestZone": {
+      "doc_count": 3
     }
   }
-]
+}
