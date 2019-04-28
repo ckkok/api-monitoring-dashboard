@@ -15,7 +15,7 @@
 
 <script>
 /*eslint-disable*/
-import Gauge from './D3Gauge';
+import Gauge from './GaugeD3';
 import mockResponse from '../mockResponse.json';
 import QueryService from '../services/QueryService.js';
 import { servicesEnum } from "../services/enums.js";
