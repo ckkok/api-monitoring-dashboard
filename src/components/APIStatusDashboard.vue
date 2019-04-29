@@ -14,12 +14,8 @@
 </template>
 
 <script>
-/*eslint-disable*/
 import Gauge from './GaugeD3';
 import mockResponse from '../mockResponse.json';
-import QueryService from '../services/QueryService.js';
-import { servicesEnum } from "../services/enums.js";
-import base64 from 'base-64';
 
 const API_STATUS_SERVICE = 'fetchAPIStatusService';
 const API_24_HOUR_STATUS = 'fetchAPIStatus24Hours';
@@ -44,22 +40,9 @@ export default {
   },
   methods: {
     fetchAPIStatuses() {
-      let headers = new Headers();
-          headers.append('Authorization', 'Basic ' + base64.encode('angelesju:Azerty01'));
-          headers.append('Content-Type' , 'application/json');
 
-      let queryString = QueryService(servicesEnum);
-
-    fetch(`http://llvcp115p:9200/webmethodsmediator*/_search`, {
-        method : 'POST',
-        credentials : "include",
-        headers : headers,
-        body : queryString
-      }).then(response => { return response.json() })
-        .then(json => { this.mapResult(json) })
-        .catch(console.log);
-      // this.worker.postMessage(API_STATUS_SERVICE)
-      //   .then(() => {}, console.error);
+      this.worker.postMessage(API_STATUS_SERVICE)
+        .then(() => {}, console.error);
       // this.registry = this.registry.map(api => {
       //   api.response.aggregations.ERRORS.doc_count += (Math.floor(Math.random() * 6) - 3);
       //   return api;
@@ -75,22 +58,6 @@ export default {
     // go(msg) {
     //   // console.log('Clicked on ' + msg);
     // }
-    mapResult(json) {
-      let apis = json.aggregations;
-      let registry = [];
-      Object.keys(apis).forEach((api) => {
-          let m = servicesEnum[api].threshold + 100;
-          let a = {
-            apiName: servicesEnum[api].apiName,
-            threshold: servicesEnum[api].threshold,
-            max: m,
-            min: 0,
-            errors: apis[api].doc_count
-          }
-          registry.push(a);
-      });
-      this.registry = registry;
-    }
   },
   created: function () {
     // this.bootstrap();

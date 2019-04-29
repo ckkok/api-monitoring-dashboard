@@ -1,7 +1,14 @@
 // TODO: Write the functions for the ElasticSearch queries in this module
 // These are to be injected into the relevant components, e.g. APIStatusDasboard
 
-export default function(servicesEnum) {
+import { servicesEnum } from './enums.js';
+
+export default function() {
+
+  let headers = new Headers();
+    headers.append('Authorization', 'Basic ' + btoa('angelesju:Azerty01'));
+    headers.append('Content-Type' , 'application/json');
+
   let apiSize = Object.keys(servicesEnum).length;
   let i = 0;
   let string = "";
@@ -74,5 +81,12 @@ export default function(servicesEnum) {
       ${string}
     }
   }`;
-  return apiQuery;
+
+  fetch(`http://llvcp115p:9200/webmethodsmediator*/_search`, {
+      method : 'POST',
+      credentials : "include",
+      headers : headers,
+      body : apiQuery
+       }).then(console.log)
+        .catch(console.log);
 }
