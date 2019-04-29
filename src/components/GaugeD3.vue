@@ -14,7 +14,7 @@ import * as d3 from 'd3';
 
 export default {
   name: 'gauge',
-  props: ['value', 'min', 'max', 'service'],
+  props: ['value', 'min', 'max', 'service','errors'],
   data() {
     return {
       val: parseInt(this.value, 10),
@@ -156,7 +156,9 @@ export default {
           configure(newConfiguration);
         }
         const ratio = scale(newValue);
-        const newAngle = config.minAngle + (ratio * range);
+        const newAngle = (config.minAngle + (ratio * range) > 90 || config.minAngle + (ratio * range) < 0) 
+                            ? 90 : config.minAngle + (ratio * range);
+
         pointer.transition()
           .duration(config.transitionMs)
           .ease(d3.easeCubic)
@@ -190,6 +192,10 @@ export default {
 </script>
 
 <style>
+:root {
+  --font : calc(1px + (16 - 1) * ((100vw - 100px) / (1536 - 100)));
+}
+
 .meter {
   position: relative;
 }
@@ -203,6 +209,7 @@ export default {
   width: 100%;
   text-align: center;
   position: absolute;
+  font-size:var(--font);
   top: 50%;
   color: black;
 }
@@ -212,6 +219,9 @@ export default {
   text-align: center;
   color: black;
   font-weight: 800;
+  font-size:var(--font);
+  overflow:hidden;
+  text-overflow:ellipsis;
   position: absolute;
   top: 80%;
 }

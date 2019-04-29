@@ -2,150 +2,150 @@
   "apis": [
     {
       "apiName": "EAI_ReceptionXMLData",
-      "threshold": 10,
+      "threshold": 1,
       "thresholdDuration": 1,
       "min": 0,
-      "max": 100
+      "max": 1
     },
     {
       "apiName": "EAI_clientSearch",
-      "threshold": 20,
+      "threshold": 136,
       "thresholdDuration": 5,
       "min": 0,
       "max": 150
     },
     {
       "apiName": "EAI_validationTicketCreation",
-      "threshold": 20,
+      "threshold": 3,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 5
     },
     {
       "apiName": "EAI_launchBPMbyCTRLM",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_PosLogStrTransactionSAP",
-      "threshold": 20,
+      "threshold": 6,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 10
     },
     {
       "apiName": "EAI_sendOrdersToFiesso",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_RMSTransfer",
-      "threshold": 20,
+      "threshold": 3,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 5
     },
     {
       "apiName": "EAI_PosLogStrTransaction",
-      "threshold": 20,
+      "threshold": 11,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 15
     },
     {
       "apiName": "EAI_CreateIncident",
-      "threshold": 20,
+      "threshold": 6,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 9
     },
     {
       "apiName": "EAI_ASNShipment",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "METAPACK_BlackBox",
-      "threshold": 20,
+      "threshold": 5,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 6
     },
     {
       "apiName": "SII_CheckTaxIdentificationNumber",
-      "threshold": 20,
+      "threshold": 3,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 3
     },
     {
       "apiName": "EAI_OrderConfirmation",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_salesCreation",
-      "threshold": 20,
+      "threshold": 9,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 12
     },
     {
       "apiName": "EAI_ItemMultilocationStock",
-      "threshold": 20,
+      "threshold": 42,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 60
     },
     {
       "apiName": "EAI_createPR",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_createInvStockMovement",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_RestfulInventoryService",
-      "threshold": 20,
+      "threshold": 119,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 150
     },
     {
       "apiName": "EAI_clientDetailEnquiry",
-      "threshold": 20,
+      "threshold": 5,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 6
     },
     {
       "apiName": "EAI_OrderFulfillment",
-      "threshold": 20,
+      "threshold": 2,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 3
     },
     {
       "apiName": "EAI_sendOrdersToSPP",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_StockLedgerErrorsRecovery",
@@ -156,17 +156,17 @@
     },
     {
       "apiName": "EAI_stockMovement_Creation",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_sendMailToSF",
-      "threshold": 20,
+      "threshold": 10,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 15
     },
     {
       "apiName": "EAI_StockLedgerErrorsRecovery",
@@ -177,199 +177,199 @@
     },
     {
       "apiName": "clientDetailEnquiry",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_PrintingRequest",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_getErrorsFromElasticsearch",
-      "threshold": 20,
+      "threshold": 9,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 15
     },
     {
       "apiName": "EAI_PosLogStrTransactionNEMOESF",
-      "threshold": 20,
+      "threshold": 6,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 10
     },
     {
       "apiName": "EAI_createRepairToIcon",
-      "threshold": 20,
+      "threshold": 27,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 40
     },
     {
       "apiName": "EAI_FilePooling",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_clientCreationUpdate",
-      "threshold": 20,
+      "threshold": 65,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 90
     },
     {
       "apiName": "OROB_LocateServices",
-      "threshold": 20,
+      "threshold": 17,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 20
     },
     {
       "apiName": "EAI_clientAdvisorEnquiry",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_PosLogStrTransactionCONSO",
-      "threshold": 20,
+      "threshold": 6,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 10
     },
     {
       "apiName": "EAI_createStoreTransaction",
-      "threshold": 20,
+      "threshold": 8,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 12
     },
     {
       "apiName": "EAI_CallOROBFulfillmentRequest",
-      "threshold": 20,
+      "threshold": 7,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 9
     },
     {
       "apiName": "EAI_StockLedgerErrorsRecovery",
-      "threshold": 20,
+      "threshold": 2,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 3
     },
     {
       "apiName": "enterpriseSF",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_SalesCreation",
-      "threshold": 20,
+      "threshold": 9,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 12
     },
     {
       "apiName": "EAI_createStockMovement",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_SAPTableReplication",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_GetPricesByCountry",
-      "threshold": 20,
+      "threshold": 11,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 15
     },
     {
       "apiName": "EAI_CreateOrderToXstore",
-      "threshold": 20,
+      "threshold": 2,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 3
     },
     {
       "apiName": "EAI_HandleMyOrderWithClientInfo",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "EAI_TaxFreeServices",
-      "threshold": 20,
+      "threshold": 1,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 1
     },
     {
       "apiName": "SF_MyCcAPI",
-      "threshold": 20,
+      "threshold": 284,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 390
     },
     {
       "apiName": "EAI_CustomerServicesApiService",
-      "threshold": 20,
+      "threshold": 33,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 40
     },
     {
       "apiName": "Line_GenQRCode",
-      "threshold": 20,
+      "threshold": 7,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 9
     },
     {
       "apiName": "MYPR_CreateXStorePr",
-      "threshold": 20,
+      "threshold": 2,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 3
     },
     {
       "apiName": "EAI_StockLedger",
-      "threshold": 20,
+      "threshold": 11,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 15
     },
     {
       "apiName": "EAI_GetPricesAndStocks",
-      "threshold": 20,
+      "threshold": 26,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 39
     },
     {
       "apiName": "EAI_CallOROBFulfillmentRequestZone",
-      "threshold": 20,
+      "threshold": 7,
       "thresholdDuration": 2,
       "min": 0,
-      "max": 200
+      "max": 9
     }
   ]
 }

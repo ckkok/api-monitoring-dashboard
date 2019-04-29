@@ -1,8 +1,8 @@
 <template>
     <div id="bottom-bar">
-        <div class= "menu-icon">Real-time monitoring</div>
+        <router-link to="/api-status-dashboard" class= "menu-icon">Real-time monitoring</router-link>
         <div class= "menu-icon">Past 24 hours</div>
-        <div class= "menu-icon">Mapping Dashboard</div>
+        <router-link to="/map-dashboard" class= "menu-icon">Mapping Dashboard</router-link>
     </div>
 </template>
 
@@ -29,5 +29,6 @@ export default {
 #bottom-bar .menu-icon {
     margin:auto 10px auto;
     font-weight:bold;
+    cursor: pointer;
 }
 </style>

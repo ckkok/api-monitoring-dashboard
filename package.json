@@ -22,6 +22,7 @@
     "highcharts": "^7.1.1",
     "vue": "^2.6.10",
     "vue-highcharts": "^0.1.0",
+    "vue-router": "^3.0.6",
     "vue-svg-gauge": "^1.1.0",
     "vue-worker": "^1.2.1",
     "vue2-highcharts": "^1.2.5"

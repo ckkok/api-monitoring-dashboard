@@ -6,16 +6,14 @@
     </transition-group>
     <div id="wrapper">
       <SideMenu v-show="false" title="Dashboard" key="sidepanel" />
-      <APIStatusDashboard key="dashboard" :apis="apiList" :fetchAPIStatusService="fetchAPIStatusService" />
+      <router-view/>
     </div>
     <BottomBar></BottomBar>
   </div>
 </template>
 
 <script>
-import APIStatusDashboard from './components/APIStatusDashboard';
 import SideMenu from './components/SideMenu';
-import APIData from './config.json';
 import FlashMessagePanel from './components/FlashMessagePanel';
 import LoadingPanel from './components/LoadingPanel';
 import fetchAPIStatusService from './services/QueryService.js';
@@ -24,11 +22,10 @@ import BottomBar from './components/BottomBar';
 export default {
   name: 'app',
   components: {
-    APIStatusDashboard, SideMenu, FlashMessagePanel, LoadingPanel, BottomBar
+    SideMenu, FlashMessagePanel, LoadingPanel, BottomBar
   },
   data: function() {
     return {
-      apiList: APIData.apis, 
       fetchAPIStatusService, 
       messages: [], 
       loaded: false

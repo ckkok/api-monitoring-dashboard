@@ -14,9 +14,7 @@
 </template>
 
 <script>
-/*eslint-disable*/
 import Gauge from './GaugeD3';
-import mockResponse from '../mockResponse.json';
 import QueryService from '../services/QueryService.js';
 import { servicesEnum } from "../services/enums.js";
 import base64 from 'base-64';
@@ -39,7 +37,7 @@ export default {
   },
   computed: {
     activeGauges: function() {
-      return this.registry.filter(api => api.errors > api.threshold);
+      return this.registry.filter(api => api.errors >= api.threshold);
     }
   },
   methods: {
@@ -58,6 +56,9 @@ export default {
       }).then(response => { return response.json() })
         .then(json => { this.mapResult(json) })
         .catch(console.log);
+      
+      /* Worker is currently having issue with import */
+
       // this.worker.postMessage(API_STATUS_SERVICE)
       //   .then(() => {}, console.error);
       // this.registry = this.registry.map(api => {
@@ -65,40 +66,33 @@ export default {
       //   return api;
       // });
     },
-    bootstrap() {
-      const response = this.apis.map(api => {
-        api.response = mockResponse[0];
-        return api;
-      });
-      this.registry = response;
-    },
+    // bootstrap() {
+    //   const response = this.apis.map(api => {
+    //     api.response = mockResponse[0];
+    //     return api;
+    //   });
+    //   this.registry = response;
+    // },
     // go(msg) {
     //   // console.log('Clicked on ' + msg);
     // }
     mapResult(json) {
-      let apis = json.aggregations;
-      let registry = [];
-      Object.keys(apis).forEach((api) => {
-          let m = servicesEnum[api].threshold + 100;
-          let a = {
-            apiName: servicesEnum[api].apiName,
-            threshold: servicesEnum[api].threshold,
-            max: m,
-            min: 0,
-            errors: apis[api].doc_count
-          }
-          registry.push(a);
+      let apiResponse = json.aggregations;
+      const response = this.apis.map(api => {
+         api.errors = apiResponse[api.apiName].doc_count;
+         return api;
       });
-      this.registry = registry;
+
+      this.registry = response;
     }
   },
   created: function () {
     // this.bootstrap();
-    const workerConfig = [
-      { message: API_STATUS_SERVICE, func: this.fetchAPIStatusService },
-      { message: API_24_HOUR_STATUS, func: this.fetchAPIStatusService }
-    ];
-    this.worker = this.$worker.create(workerConfig);
+    // const workerConfig = [
+    //   { message: API_STATUS_SERVICE, func: this.fetchAPIStatusService },
+    //   { message: API_24_HOUR_STATUS, func: this.fetchAPIStatusService }
+    // ];
+    // this.worker = this.$worker.create(workerConfig);
     this.fetchAPIStatuses();
     setInterval(() => this.fetchAPIStatuses(), 60000);
   }
@@ -140,6 +134,7 @@ export default {
 
 .gauge-container {
   cursor: pointer;
+  overflow:hidden;
   padding: 1rem;
   height: auto;
   background-color: rgba(255, 255, 255, 0.822);
