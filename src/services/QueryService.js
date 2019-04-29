@@ -1,19 +1,16 @@
-// TODO: Write the functions for the ElasticSearch queries in this module
-// These are to be injected into the relevant components, e.g. APIStatusDasboard
-
 import { servicesEnum } from './enums.js';
+import { API_STATUS_FETCH_TRIGGER, API_24_HOUR_STATUS } from '../data/Constants';
 
-export default function() {
+const query = async () => {
 
-  let headers = new Headers();
+  const headers = new Headers();
     headers.append('Authorization', 'Basic ' + btoa('angelesju:Azerty01'));
     headers.append('Content-Type' , 'application/json');
 
   let apiSize = Object.keys(servicesEnum).length;
   let i = 0;
   let string = "";
-
-  Object.keys(servicesEnum).forEach(function(api) {
+  Object.keys(servicesEnum).forEach(api => {
     if(i < (apiSize-1)) {
       let stringBuilder =
         `"${api}" : {
@@ -43,7 +40,7 @@ export default function() {
           }
       },`;
       string += stringBuilder;
-    }else {
+    } else {
       let stringBuilder =
         `"${api}" : {
           "filter" : {
@@ -74,7 +71,8 @@ export default function() {
       string += stringBuilder;
     }
     i++;
-  });
+  })
+
   let apiQuery =`{
     "size" : 0,
     "aggs" : {
@@ -82,11 +80,25 @@ export default function() {
     }
   }`;
 
-  fetch(`http://llvcp115p:9200/webmethodsmediator*/_search`, {
-      method : 'POST',
-      credentials : "include",
-      headers : headers,
-      body : apiQuery
-       }).then(console.log)
-        .catch(console.log);
+  const response = await fetch(`http://llvcp115p:9200/webmethodsmediator*/_search`, {
+                      method : 'POST',
+                      credentials : "include",
+                      headers : headers,
+                      body : apiQuery
+                    });
+  const json = await response.json();
+  return json.aggregations;
 }
+
+self.addEventListener('message', e => {
+  switch (e.data) {
+    case API_STATUS_FETCH_TRIGGER:
+      query().then(result => self.postMessage(result));
+      return;
+    case API_24_HOUR_STATUS:
+      query().then(result => self.postMessage(result));
+      return;
+    default:
+      return;
+  };
+});

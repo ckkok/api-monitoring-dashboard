@@ -6,7 +6,7 @@
     </transition-group>
     <div id="wrapper">
       <SideMenu v-show="false" title="Dashboard" key="sidepanel" />
-      <APIStatusDashboard key="dashboard" :apis="apiList" :fetchAPIStatusService="fetchAPIStatusService" />
+      <APIStatusDashboard key="dashboard" :apis="apiList" />
     </div>
     <BottomBar></BottomBar>
   </div>
@@ -18,7 +18,6 @@ import SideMenu from './components/SideMenu';
 import APIData from './config.json';
 import FlashMessagePanel from './components/FlashMessagePanel';
 import LoadingPanel from './components/LoadingPanel';
-import fetchAPIStatusService from './services/QueryService.js';
 import BottomBar from './components/BottomBar';
 
 export default {
@@ -29,7 +28,7 @@ export default {
   data: function() {
     return {
       apiList: APIData.apis, 
-      fetchAPIStatusService, 
+
       messages: [], 
       loaded: false
     }

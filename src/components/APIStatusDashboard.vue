@@ -16,21 +16,22 @@
 <script>
 import Gauge from './GaugeD3';
 import mockResponse from '../mockResponse.json';
-
-const API_STATUS_SERVICE = 'fetchAPIStatusService';
-const API_24_HOUR_STATUS = 'fetchAPIStatus24Hours';
+import QueryService from 'worker-loader!../services/QueryService.js';
+import { API_STATUS_FETCH_TRIGGER, API_24_HOUR_STATUS } from '../data/Constants';
+import { clearInterval } from 'timers';
 
 export default {
   name: 'api-status-dashboard',
   components: {
     Gauge
   },
-  props: ['apis', 'fetchAPIStatusService'],
+  props: ['apis'],
   data: function () {
     return {
       registry: [],
       worker: null,
-      errors: null
+      errors: null,
+      timer: null
     }
   },
   computed: {
@@ -40,34 +41,33 @@ export default {
   },
   methods: {
     fetchAPIStatuses() {
-
-      this.worker.postMessage(API_STATUS_SERVICE)
-        .then(() => {}, console.error);
-      // this.registry = this.registry.map(api => {
-      //   api.response.aggregations.ERRORS.doc_count += (Math.floor(Math.random() * 6) - 3);
-      //   return api;
-      // });
+      this.worker.postMessage(API_STATUS_FETCH_TRIGGER);
     },
-    bootstrap() {
-      const response = this.apis.map(api => {
-        api.response = mockResponse[0];
+    onWorkerMessage(e) {
+      const apiResponse = e.data;
+      this.registry = this.apis.map(api => {
+        api.errors = apiResponse[api.apiName].doc_count;
         return api;
       });
-      this.registry = response;
     },
-    // go(msg) {
-    //   // console.log('Clicked on ' + msg);
-    // }
+    go(msg) {
+      console.log('Clicked on ' + msg);
+    }
   },
-  created: function () {
-    // this.bootstrap();
-    const workerConfig = [
-      { message: API_STATUS_SERVICE, func: this.fetchAPIStatusService },
-      { message: API_24_HOUR_STATUS, func: this.fetchAPIStatusService }
-    ];
-    this.worker = this.$worker.create(workerConfig);
+  created() {
+    if (this.worker === undefined || this.worker === null) {
+      this.worker = new QueryService();
+      this.worker.addEventListener('message', this.onWorkerMessage, false);
+    };
+    if (this.timer === undefined || this.timer === null) {
+      this.timer = setInterval(() => this.fetchAPIStatuses(), 60000);
+    }
     this.fetchAPIStatuses();
-    setInterval(() => this.fetchAPIStatuses(), 60000);
+  },
+  beforeDestroy() {
+    this.worker.removeEventListener('message', this.onWorkerMessage, false);
+    this.worker = null;
+    clearInterval(this.timer);
   }
 }
 </script>
