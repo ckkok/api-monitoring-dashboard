@@ -7,12 +7,12 @@ const query = async () => {
     headers.append('Authorization', 'Basic ' + btoa('angelesju:Azerty01'));
     headers.append('Content-Type' , 'application/json');
 
-  let apiSize = Object.keys(servicesEnum).length;
+  const apiSize = Object.keys(servicesEnum).length - 1;
   let i = 0;
   let string = "";
   Object.keys(servicesEnum).forEach(api => {
-    if(i < (apiSize-1)) {
-      let stringBuilder =
+    if (i < apiSize) {
+      string +=
         `"${api}" : {
           "filter" : {
             "bool" : {
@@ -39,9 +39,8 @@ const query = async () => {
             }
           }
       },`;
-      string += stringBuilder;
     } else {
-      let stringBuilder =
+      string +=
         `"${api}" : {
           "filter" : {
             "bool" : {
@@ -68,7 +67,6 @@ const query = async () => {
             }
           }
       }`;
-      string += stringBuilder;
     }
     i++;
   })
@@ -100,5 +98,5 @@ self.addEventListener('message', e => {
       return;
     default:
       return;
-  };
+  }
 });

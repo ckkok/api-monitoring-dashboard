@@ -15,7 +15,6 @@
 
 <script>
 import Gauge from './GaugeD3';
-import mockResponse from '../mockResponse.json';
 import QueryService from 'worker-loader!../services/QueryService.js';
 import { API_STATUS_FETCH_TRIGGER, API_24_HOUR_STATUS } from '../data/Constants';
 import { clearInterval } from 'timers';
